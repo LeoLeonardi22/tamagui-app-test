@@ -1,0 +1,92 @@
+import { Chrome } from '@tamagui/lucide-icons';
+import React from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Button, H2, Input, ScrollView, Text, XStack, YStack, useTheme } from 'tamagui';
+
+// Componente interno che legge il tema
+function ScreenContent() {
+  const insets = useSafeAreaInsets();
+  const theme = useTheme();  // ✅ Ora legge il tema corretto
+
+  return (
+    <YStack 
+      f={1} 
+      bg="$background"
+      pt={insets.top}
+      style={{ backgroundColor: theme.background.val }}  // ✅ Safe area color
+    >
+      <ScrollView 
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ 
+          padding: 16,
+          paddingBottom: insets.bottom + 16
+        }}
+      >
+        <YStack gap="$4" py="$8">
+          <ThemeDebug />
+          <XStack gap="$2" ai="center" jc="center">
+            <H2>Nuovo account</H2>
+          </XStack>
+          
+          <XStack gap="$4">
+            <Input f={1} placeholder="Nome" size="$6" />
+            <Input f={1} placeholder="Cognome" size="$6" />
+          </XStack>
+          
+          <Input placeholder="Email" keyboardType="email-address" size="$6" />
+          <Input placeholder="Password" secureTextEntry size="$6" />
+          <Input placeholder="Conferma Password" secureTextEntry size="$6" />
+        
+          <YStack gap="$4" mt="$4">
+            <Button size="$6" themeInverse>
+              Conferma
+            </Button>
+            
+            <XStack ai="center" jc="center">
+              <Text>Oppure</Text>
+            </XStack>
+            
+            <Button size="$6" icon={Chrome} themeInverse>
+              Google Login
+            </Button>
+            
+            <Button size="$6" bg="$color5">
+              Nuovo account
+            </Button>
+          </YStack>
+        
+          <XStack gap="$3" jc="center" ai="center" mt="$6">
+            <Text color="$gray10">Problems?</Text>
+            <Button chromeless size="$3" p="$0">
+              Forgot Password
+            </Button>
+          </XStack>
+        </YStack>
+      </ScrollView>
+    </YStack>
+  );
+}
+
+// Componente principale che applica il tema
+export default function ScrollableScreen() {
+  return (
+    <YStack f={1} theme="dark_accent">  
+      <ScreenContent />  
+    </YStack>
+  );
+}
+
+function ThemeDebug() {
+  const theme = useTheme();
+  
+  return (
+    <YStack p="$4" bg="$gray2" br="$4" gap="$2">
+      <Text fontWeight="bold">🔍 Debug Tema:</Text>
+      <Text fontSize="$2">background: {theme.background?.val}</Text>
+      <Text fontSize="$2">color: {theme.color?.val}</Text>
+      <Text fontSize="$2">red10: {theme.red10?.val}</Text>
+      <Text fontSize="$2">color1: {theme.color1?.val}</Text>
+      <Text fontSize="$2">color5: {theme.color5?.val}</Text>
+    </YStack>
+  );
+}
