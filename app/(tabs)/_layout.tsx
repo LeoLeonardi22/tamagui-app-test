@@ -1,26 +1,26 @@
-import { Home, Search } from '@tamagui/lucide-icons';
-import { Tabs } from 'expo-router';
+import { Home, Search } from "@tamagui/lucide-icons";
+import { Tabs } from "expo-router";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#007AFF',
+        tabBarActiveTintColor: "#007AFF",
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="explore"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+          title: "Esplora",
+          tabBarIcon: ({ color, size }) => <Search color={color} size={size} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="dashboard"
         options={{
-          title: 'Esplora',
-          tabBarIcon: ({ color, size }) => <Search color={color} size={size} />,
+          title: "Home",
+          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
         }}
       />
     </Tabs>

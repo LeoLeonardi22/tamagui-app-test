@@ -1,34 +1,46 @@
-import { Heart, Search, Star } from '@tamagui/lucide-icons';
-import { Card, H2, Text, XStack, YStack } from 'tamagui';
+import { useRouter } from "expo-router";
+import React from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Button, H2, ScrollView, XStack, YStack, useTheme } from "tamagui";
 
-export default function ExploreScreen() {
+// Componente interno che legge il tema
+function ScreenContent() {
+  const insets = useSafeAreaInsets();
+  const theme = useTheme(); // ✅ Ora legge il tema corretto
+  const router = useRouter();
+
   return (
-    <YStack f={1} bg="$background" p="$4" gap="$4">
-      <H2>Esplora</H2>
-      
-      <Card elevate size="$4" bordered>
-        <Card.Header padded>
-          <XStack gap="$2" ai="center">
-            <Search size={24} />
-            <H2>Ricerca</H2>
+    <YStack
+      f={1}
+      bg="$background"
+      pt={insets.top}
+      style={{ backgroundColor: theme.background.val }} // ✅ Safe area color
+    >
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          padding: 16,
+          paddingBottom: insets.bottom + 16,
+        }}
+      >
+        <YStack f={1} bg="$background" gap="$4" py="$8">
+          <XStack gap="$2" ai="center" jc="center">
+            <H2>Benvenuto!</H2>
           </XStack>
-        </Card.Header>
-        <Card.Footer padded>
-          <Text>Componente card di Tamagui</Text>
-        </Card.Footer>
-      </Card>
+          <Button size="$6" themeInverse>
+            continua
+          </Button>
+        </YStack>
+      </ScrollView>
+    </YStack>
+  );
+}
 
-      <XStack gap="$3" jc="center">
-        <Card size="$4" bordered width={150} height={150} ai="center" jc="center">
-          <Star size={32} color="$yellow10" />
-          <Text mt="$2">Preferiti</Text>
-        </Card>
-        
-        <Card size="$4" bordered width={150} height={150} ai="center" jc="center">
-          <Heart size={32} color="$red10" />
-          <Text mt="$2">Mi piace</Text>
-        </Card>
-      </XStack>
+// Componente principale che applica il tema
+export default function ScrollableScreen() {
+  return (
+    <YStack f={1} theme="dark_accent">
+      <ScreenContent />
     </YStack>
   );
 }

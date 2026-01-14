@@ -43,7 +43,7 @@ function ScreenContent() {
           <Button
             size="$6"
             themeInverse
-            onPress={() => router.push("/dasboard")}
+            onPress={() => router.push("/(tabs)/dashboard")}
           >
             Login
           </Button>
@@ -51,14 +51,14 @@ function ScreenContent() {
             size="$6"
             icon={Chrome}
             themeInverse
-            onPress={() => router.push("/dasboard")}
+            onPress={() => router.push("/(tabs)/dashboard")}
           >
             Google Login
           </Button>
           <Button
             size="$6"
             themeInverse
-            onPress={() => router.push("/signup-step1")}
+            onPress={() => router.push("/(auth)/signup-step1")}
           >
             Nuovo account
           </Button>
