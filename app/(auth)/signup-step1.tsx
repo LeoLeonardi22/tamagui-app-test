@@ -1,12 +1,14 @@
 import { Chrome } from '@tamagui/lucide-icons';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Button, H2, Input, ScrollView, Text, XStack, YStack, useTheme } from 'tamagui';
+import { Button, H2, Input, Progress, ScrollView, Text, XStack, YStack, useTheme } from 'tamagui';
 
 // Componente interno che legge il tema
 function ScreenContent() {
   const insets = useSafeAreaInsets();
-  const theme = useTheme();  // ✅ Ora legge il tema corretto
+  const theme = useTheme();  
+  const router = useRouter();
 
   return (
     <YStack 
@@ -23,7 +25,7 @@ function ScreenContent() {
         }}
       >
         <YStack gap="$4" py="$8">
-          <ThemeDebug />
+            <Progress value={25}><Progress.Indicator animation="bouncy" /></Progress>
           <XStack gap="$2" ai="center" jc="center">
             <H2>Nuovo account</H2>
           </XStack>
@@ -38,7 +40,7 @@ function ScreenContent() {
           <Input placeholder="Conferma Password" secureTextEntry size="$6" />
         
           <YStack gap="$4" mt="$4">
-            <Button size="$6" themeInverse>
+            <Button size="$6" themeInverse onPress={() => router.push('/signup-step2')}>
               Conferma
             </Button>
             
@@ -48,10 +50,6 @@ function ScreenContent() {
             
             <Button size="$6" icon={Chrome} themeInverse>
               Google Login
-            </Button>
-            
-            <Button size="$6" bg="$color5">
-              Nuovo account
             </Button>
           </YStack>
         
@@ -72,21 +70,6 @@ export default function ScrollableScreen() {
   return (
     <YStack f={1} theme="dark_accent">  
       <ScreenContent />  
-    </YStack>
-  );
-}
-
-function ThemeDebug() {
-  const theme = useTheme();
-  
-  return (
-    <YStack p="$4" bg="$gray2" br="$4" gap="$2">
-      <Text fontWeight="bold">🔍 Debug Tema:</Text>
-      <Text fontSize="$2">background: {theme.background?.val}</Text>
-      <Text fontSize="$2">color: {theme.color?.val}</Text>
-      <Text fontSize="$2">red10: {theme.red10?.val}</Text>
-      <Text fontSize="$2">color1: {theme.color1?.val}</Text>
-      <Text fontSize="$2">color5: {theme.color5?.val}</Text>
     </YStack>
   );
 }
