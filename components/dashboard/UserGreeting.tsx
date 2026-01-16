@@ -2,7 +2,7 @@ import { getLevelTitle, userData } from '@/data/mockData';
 import React from 'react';
 import { Card, H2, Progress, Text, XStack, YStack } from 'tamagui';
 
-const UserGreeting = () => {
+export const UserGreeting = () => {
   const progressPercent = Math.round((userData.xp / userData.xpToNext) * 100);
 
   return (
