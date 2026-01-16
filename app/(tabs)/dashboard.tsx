@@ -15,7 +15,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   Button,
   Card,
-  H2,
   H3,
   H4,
   Image,
@@ -28,14 +27,9 @@ import {
   useTheme,
 } from "tamagui";
 
+import { UserGreeting } from "@/components/dashboard/UserGreeting";
+
 // Mock Data
-const userData = {
-  firstName: "Mario",
-  level: 7,
-  xp: 740,
-  xpToNext: 1000,
-  levelTitle: "Strike Master",
-};
 
 const stats = {
   gamesPlayed: 47,
@@ -132,23 +126,6 @@ const nearbyCenters = [
   },
 ];
 
-// Helper function
-const getLevelTitle = (level: number) => {
-  const titles: { [key: number]: string } = {
-    1: "Rookie",
-    2: "Beginner",
-    3: "Amateur",
-    4: "Skilled",
-    5: "Pro",
-    6: "Expert",
-    7: "Strike Master",
-    8: "Champion",
-    9: "Legend",
-    10: "Hall of Fame",
-  };
-  return titles[level] || "Player";
-};
-
 // Components
 const Header = () => {
   return (
@@ -176,42 +153,6 @@ const Header = () => {
         </Button>
       </XStack>
     </XStack>
-  );
-};
-
-const UserGreeting = () => {
-  const progressPercent = Math.round((userData.xp / userData.xpToNext) * 100);
-
-  return (
-    <Card
-      elevate
-      bordered
-      p="$4"
-      mt="$4"
-      mx="$4"
-      mb="$4"
-      pressStyle={{ scale: 0.98 }}
-      animation="bouncy"
-      gap="$2"
-    >
-      <YStack gap="$5">
-        <H2>Ciao, {userData.firstName}! 🎳</H2>
-        <XStack ai="center" gap="$2">
-          <Text fontSize="$3" color="$gray11">
-            Level {userData.level} - {getLevelTitle(userData.level)}
-          </Text>
-        </XStack>
-      </YStack>
-      <YStack gap="$2">
-        <Progress value={progressPercent} height={8}>
-          <Progress.Indicator animation="bouncy" />
-        </Progress>
-        <Text fontSize="$6" color="$primarylight" fontWeight="bold">
-          {userData.xp}/{userData.xpToNext} XP
-        </Text>
-      </YStack>
-      +
-    </Card>
   );
 };
 
@@ -297,69 +238,61 @@ const ChallengeCard = ({
 
 const StatsQuickView = () => {
   return (
-    <Card
-      bordered
-      p="$4"
-      mb="$3"
-      pressStyle={{ scale: 0.98 }}
-      animation="bouncy"
-    >
-      <YStack gap="$3">
-        <H3>Stitistiche</H3>
+    <YStack gap="$3">
+      <H3>Stitistiche</H3>
 
-        <XStack gap="$3" fw="wrap">
-          <Card f={1} minWidth={150} bordered elevate p="$4">
-            <YStack gap="$2" ai="center">
-              <TrendingUp size={32} color="$blue10" />
-              <H3>{stats.avgScore}</H3>
-              <Text fontSize="$2" color="$gray11">
-                Media Punteggi
-              </Text>
-            </YStack>
-          </Card>
+      <XStack gap="$3" fw="wrap">
+        <Card f={1} minWidth={150} bordered elevate p="$4">
+          <YStack gap="$2" ai="center">
+            <TrendingUp size={32} color="$blue10" />
+            <H3>{stats.avgScore}</H3>
+            <Text fontSize="$2" color="$gray11">
+              Media Punteggi
+            </Text>
+          </YStack>
+        </Card>
 
-          <Card f={1} minWidth={150} bordered elevate p="$4">
-            <YStack gap="$2" ai="center">
-              <Circle size={32} color="$green10" />
-              <H3>{stats.gamesPlayed}</H3>
-              <Text fontSize="$2" color="$gray11">
-                Partite Giocate
-              </Text>
-            </YStack>
-          </Card>
-        </XStack>
+        <Card f={1} minWidth={150} bordered elevate p="$4">
+          <YStack gap="$2" ai="center">
+            <Circle size={32} color="$green10" />
+            <H3>{stats.gamesPlayed}</H3>
+            <Text fontSize="$2" color="$gray11">
+              Partite Giocate
+            </Text>
+          </YStack>
+        </Card>
+      </XStack>
 
-        <XStack gap="$3" fw="wrap">
-          <Card f={1} minWidth={150} bordered elevate p="$4">
-            <YStack gap="$2" ai="center">
-              <Trophy size={32} color="$yellow10" />
-              <H3>{stats.strikeRate}%</H3>
-              <Text fontSize="$2" color="$gray11">
-                Strike Rate
-              </Text>
-            </YStack>
-          </Card>
+      <XStack gap="$3" fw="wrap">
+        <Card f={1} minWidth={150} bordered elevate p="$4">
+          <YStack gap="$2" ai="center">
+            <Trophy size={32} color="$yellow10" />
+            <H3>{stats.strikeRate}%</H3>
+            <Text fontSize="$2" color="$gray11">
+              Strike Rate
+            </Text>
+          </YStack>
+        </Card>
 
-          <Card f={1} minWidth={150} bordered elevate p="$4">
-            <YStack gap="$2" ai="center">
-              <Users size={32} color="$purple10" />
-              <H3>{stats.spareRate}%</H3>
-              <Text fontSize="$2" color="$gray11">
-                Spare Rate
-              </Text>
-            </YStack>
-          </Card>
-        </XStack>
+        <Card f={1} minWidth={150} bordered elevate p="$4">
+          <YStack gap="$2" ai="center">
+            <Users size={32} color="$purple10" />
+            <H3>{stats.spareRate}%</H3>
+            <Text fontSize="$2" color="$gray11">
+              Spare Rate
+            </Text>
+          </YStack>
+        </Card>
+      </XStack>
 
-        <Text fontSize="$1" color="$gray10" textAlign="center">
-          Last played: {stats.lastPlayed}
-        </Text>
+      <Text fontSize="$1" color="$gray10" textAlign="center">
+        Last played: {stats.lastPlayed}
+      </Text>
 
-        <Button size="$4" variant="outlined" iconAfter={ChevronRight}>
-          See Details
-        </Button>
-      </YStack>
-    </Card>
+      <Button size="$4" variant="outlined" iconAfter={ChevronRight}>
+        See Details
+      </Button>
+    </YStack>
   );
 };
 
