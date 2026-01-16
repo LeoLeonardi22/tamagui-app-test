@@ -33,7 +33,7 @@ function ScreenContent() {
           paddingBottom: insets.bottom + 16,
         }}
       >
-        <YStack f={1} bg="$background" gap="$4" py="$8">
+        <YStack f={1} bg="$background" gap="$4" py="$8" jc="center" minHeight="100%">
           <XStack gap="$2" ai="center" jc="center">
             <H2>Benvenuto!</H2>
           </XStack>

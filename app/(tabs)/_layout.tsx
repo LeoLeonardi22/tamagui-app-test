@@ -10,17 +10,17 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="explore"
-        options={{
-          title: "Esplora",
-          tabBarIcon: ({ color, size }) => <Search color={color} size={size} />,
-        }}
-      />
-      <Tabs.Screen
         name="dashboard"
         options={{
           title: "Home",
           tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+        }}
+      />
+      <Tabs.Screen
+        name="statistiche"
+        options={{
+          title: "statistiche",
+          tabBarIcon: ({ color, size }) => <Search color={color} size={size} />,
         }}
       />
     </Tabs>

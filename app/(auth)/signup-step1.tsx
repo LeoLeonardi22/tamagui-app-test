@@ -27,6 +27,11 @@ function ScreenContent() {
       pt={insets.top}
       style={{ backgroundColor: theme.background.val }} // ✅ Safe area color
     >
+      <YStack p="$3">
+        <Progress value={25} mt="$4">
+          <Progress.Indicator animation="bouncy" />
+        </Progress>
+      </YStack>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -34,10 +39,7 @@ function ScreenContent() {
           paddingBottom: insets.bottom + 16,
         }}
       >
-        <YStack gap="$4" py="$8">
-          <Progress value={25}>
-            <Progress.Indicator animation="bouncy" />
-          </Progress>
+        <YStack gap="$4" py="$8" jc="center" minHeight="100%">
           <XStack gap="$2" ai="center" jc="center">
             <H2>Nuovo account</H2>
           </XStack>

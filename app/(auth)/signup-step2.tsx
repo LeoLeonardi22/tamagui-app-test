@@ -1,6 +1,6 @@
-import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
     Button,
     H2,
@@ -10,20 +10,20 @@ import {
     ScrollView,
     XStack,
     YStack,
-    useTheme
-} from 'tamagui';
+    useTheme,
+} from "tamagui";
 
 function ScreenContent() {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
   const router = useRouter();
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState("");
 
   const options = [
-    { value: 'family', label: 'Family and Kids' },
-    { value: 'friends', label: 'Friends and teammates' },
-    { value: 'party', label: 'HERE TO PARTY!' },
-    { value: 'compete', label: 'HERE TO COMPETE!' },
+    { value: "family", label: "Family and Kids" },
+    { value: "friends", label: "Friends and teammates" },
+    { value: "party", label: "HERE TO PARTY!" },
+    { value: "compete", label: "HERE TO COMPETE!" },
   ];
 
   return (
@@ -33,6 +33,11 @@ function ScreenContent() {
       pt={insets.top}
       style={{ backgroundColor: theme.background.val }}
     >
+      <YStack p="$3">
+        <Progress value={50} mt="$4">
+          <Progress.Indicator animation="bouncy" />
+        </Progress>
+      </YStack>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -40,13 +45,11 @@ function ScreenContent() {
           paddingBottom: insets.bottom + 16,
         }}
       >
-        <YStack gap="$4" py="$8">
-          <Progress value={50}>
-            <Progress.Indicator animation="bouncy" />
-          </Progress>
-
+        <YStack gap="$4" py="$8" jc="center" minHeight="100%">
           <YStack gap="$3" ai="center">
-            <H2 textAlign="center">Tell us a little more about your way to play</H2>
+            <H2 textAlign="center">
+              Tell us a little more about your way to play
+            </H2>
           </YStack>
 
           <RadioGroup value={selected} onValueChange={setSelected} gap="$3">
@@ -58,12 +61,18 @@ function ScreenContent() {
                 p="$4"
                 br="$4"
                 borderWidth={1}
-                borderColor={selected === option.value ? '$blue10' : '$borderColor'}
-                bg={selected === option.value ? '$blue2' : '$background'}
+                borderColor={
+                  selected === option.value ? "$blue10" : "$borderColor"
+                }
+                bg={selected === option.value ? "$blue2" : "$background"}
                 pressStyle={{ scale: 0.98 }}
                 onPress={() => setSelected(option.value)}
               >
-                <RadioGroup.Item value={option.value} id={option.value} size="$5">
+                <RadioGroup.Item
+                  value={option.value}
+                  id={option.value}
+                  size="$5"
+                >
                   <RadioGroup.Indicator />
                 </RadioGroup.Item>
                 <Label htmlFor={option.value} f={1} fontSize="$5">
@@ -79,7 +88,7 @@ function ScreenContent() {
             mt="$4"
             disabled={!selected}
             opacity={!selected ? 0.5 : 1}
-            onPress={() => router.push('/signup-step3')}
+            onPress={() => router.push("/signup-step3")}
           >
             Continua
           </Button>
