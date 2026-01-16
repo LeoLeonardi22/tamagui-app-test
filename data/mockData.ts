@@ -69,3 +69,57 @@ export const upcomingVisits = [
     lane: "Lane 12",
   },
 ];
+
+export const recentHighlights = [
+  {
+    id: "1",
+    imageUrl: "https://via.placeholder.com/120",
+    icon: "🎳",
+    label: "Perfect Strike!",
+    timeAgo: "3 days ago",
+  },
+  {
+    id: "2",
+    imageUrl: "https://via.placeholder.com/120",
+    icon: "🎉",
+    label: "Group Fun",
+    timeAgo: "1 week ago",
+  },
+  {
+    id: "3",
+    imageUrl: "https://via.placeholder.com/120",
+    icon: "🏆",
+    label: "High Score",
+    timeAgo: "2 weeks ago",
+  },
+  {
+    id: "4",
+    imageUrl: "https://via.placeholder.com/120",
+    icon: "🎳",
+    label: "Perfect Strike!",
+    timeAgo: "8 days ago",
+  },
+];
+
+export const nearbyCenters = [
+  {
+    id: "1",
+    name: "Bowling Milano",
+    distance: "1.2 km",
+    rating: 4.5,
+    address: "Via Roma 123, Milano",
+  },
+  {
+    id: "2",
+    name: "Strike Zone",
+    distance: "3.5 km",
+    rating: 4.7,
+    address: "Corso Venezia 45, Milano",
+  },
+];
+
+export const recentGames = [
+  { id: 1, date: "15 Gen 2025", center: "Bowling Milano", score: 178, isRecord: true },
+  { id: 2, date: "12 Gen 2025", center: "Strike Zone", score: 156, isRecord: false },
+  { id: 3, date: "08 Gen 2025", center: "Bowling Milano", score: 142, isRecord: false },
+];
