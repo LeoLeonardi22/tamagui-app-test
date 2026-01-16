@@ -29,8 +29,8 @@ function ScreenContent() {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          padding: 16,
-          paddingBottom: insets.bottom + 16,
+          p: 16,
+          pb: insets.bottom + 16,
         }}
       >
         <YStack f={1} bg="$background" gap="$4" py="$8" jc="center" minHeight="100%">

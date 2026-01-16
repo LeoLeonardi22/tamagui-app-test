@@ -11,7 +11,7 @@ import {
   Text,
   XStack,
   YStack,
-  useTheme,
+  useTheme
 } from 'tamagui';
 
 function ScreenContent() {
@@ -34,16 +34,16 @@ function ScreenContent() {
 
   return (
     <YStack
-      f={1}
+      flex={1}
       bg="$background"
       pt={insets.top}
-      style={{ backgroundColor: theme.background.val }}
+      theme="light_accent"
     >
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          padding: 16,
-          paddingBottom: insets.bottom + 16,
+          p: 16,
+          pb: insets.bottom + 16,
         }}
       >
         <YStack gap="$4" py="$4">
@@ -54,8 +54,8 @@ function ScreenContent() {
           </YStack>
 
           {/* Stats Cards */}
-          <XStack gap="$3" fw="wrap">
-            <Card f={1} minWidth={150} bordered elevate p="$4">
+          <XStack gap="$3" flexWrap="wrap">
+            <Card flex={1} minWidth={150} bordered elevate padding="$4">
               <YStack gap="$2" ai="center">
                 <TrendingUp size={32} color="$blue10" />
                 <H3>{stats.avgScore}</H3>
@@ -63,7 +63,7 @@ function ScreenContent() {
               </YStack>
             </Card>
 
-            <Card f={1} minWidth={150} bordered elevate p="$4">
+            <Card flex={1} minWidth={150} bordered elevate padding="$4">
               <YStack gap="$2" ai="center">
                 <Circle size={32} color="$green10" />
                 <H3>{stats.gamesPlayed}</H3>
@@ -72,8 +72,8 @@ function ScreenContent() {
             </Card>
           </XStack>
 
-          <XStack gap="$3" fw="wrap">
-            <Card f={1} minWidth={150} bordered elevate p="$4">
+          <XStack gap="$3" flexWrap="wrap">
+            <Card flex={1} minWidth={150} bordered elevate padding="$4">
               <YStack gap="$2" ai="center">
                 <Trophy size={32} color="$yellow10" />
                 <H3>{stats.strikeRate}%</H3>
@@ -81,7 +81,7 @@ function ScreenContent() {
               </YStack>
             </Card>
 
-            <Card f={1} minWidth={150} bordered elevate p="$4">
+            <Card flex={1} minWidth={150} bordered elevate padding="$4">
               <YStack gap="$2" ai="center">
                 <Users size={32} color="$purple10" />
                 <H3>{stats.spareRate}%</H3>
@@ -94,9 +94,9 @@ function ScreenContent() {
           <YStack gap="$3" mt="$4">
             <H4>Partite Recenti</H4>
             {recentGames.map((game) => (
-              <Card key={game.id} bordered p="$4">
-                <XStack jc="space-between" ai="center">
-                  <YStack gap="$1" f={1}>
+              <Card key={game.id} bordered padding="$4">
+                <XStack jc="space-between" alignItems="center">
+                  <YStack gap="$1" flex={1}>
                     <Text fontWeight="600">{game.center}</Text>
                     <Text fontSize="$2" color="$gray11">{game.date}</Text>
                   </YStack>
@@ -129,7 +129,7 @@ function ScreenContent() {
 
 export default function DashboardScreen() {
   return (
-    <YStack f={1} theme="dark_accent">
+    <YStack flex={1} theme="dark_accent">
       <ScreenContent />
     </YStack>
   );

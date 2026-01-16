@@ -19,7 +19,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="statistiche"
         options={{
-          title: "statistiche",
+          title: "Statistiche",
           tabBarIcon: ({ color, size }) => <Search color={color} size={size} />,
         }}
       />

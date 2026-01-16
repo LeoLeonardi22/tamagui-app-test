@@ -22,8 +22,8 @@ function ScreenContent() {
   const options = [
     { value: "family", label: "Family and Kids" },
     { value: "friends", label: "Friends and teammates" },
-    { value: "party", label: "HERE TO PARTY!" },
-    { value: "compete", label: "HERE TO COMPETE!" },
+    { value: "party", label: "here to party!" },
+    { value: "compete", label: "here to compete!" },
   ];
 
   return (

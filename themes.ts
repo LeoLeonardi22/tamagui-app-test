@@ -109,4 +109,8 @@ export type Themes = typeof builtThemes
 // back into JS for you, and the bundler plugins set TAMAGUI_ENVIRONMENT. so
 // long as you are using the Vite, Next, Webpack plugins this should just work,
 // but if not you can just export builtThemes directly as themes:
-export const themes = builtThemes
+export const themes: Themes =
+  process.env.TAMAGUI_ENVIRONMENT === 'client' &&
+  process.env.NODE_ENV === 'production'
+    ? ({} as any)
+    : (builtThemes as any)

@@ -1,10 +1,10 @@
-import { config } from '@tamagui/config/v3'
+import { themes } from '@/themes'
+import { config as defaultConfig } from '@tamagui/config'
 import { createTamagui } from 'tamagui'
-import { themes } from './themes'
 
 const tamaguiConfig = createTamagui({
-  ...config,
-  themes,  // ✅ Ora usa i tuoi temi custom!
+  ...defaultConfig,
+  themes,
 })
 
 export default tamaguiConfig

@@ -6,14 +6,18 @@ import { Button, H3, H4, ScrollView, XStack, YStack, useTheme } from "tamagui";
 import { BookingCard } from "@/components/dashboard/BookingCard";
 import { CenterCard } from "@/components/dashboard/CenterCard";
 import { ChallengeCard } from "@/components/dashboard/ChallengeCard";
-import { HighlightCard } from "@/components/dashboard/HighlightCard";
+import { HighlightCard } from "@/components/dashboard/RentHighlights";
 import { UserGreeting } from "@/components/dashboard/UserGreeting";
 import { VisitCard } from "@/components/dashboard/VisitCard";
 import { Header } from "@/components/shared/Header";
 import { StatsQuickView } from "@/components/shared/StatsQuickView";
-import { challenges, nearbyCenters, recentHighlights, upcomingVisits } from "@/data/mockData";
-
-
+import { ThemeDebugger } from "@/components/ThemeDebugger";
+import {
+  challenges,
+  nearbyCenters,
+  recentHighlights,
+  upcomingVisits,
+} from "@/data/mockData";
 
 // Main Screen Content
 function ScreenContent() {
@@ -22,22 +26,22 @@ function ScreenContent() {
 
   return (
     <YStack
-      f={1}
+      flex={1}
       bg="$background"
       pt={insets.top}
       style={{ backgroundColor: theme.background.val }}
     >
       <Header />
-
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingBottom: insets.bottom + 16,
+          pb: insets.bottom + 16,
         }}
       >
         <YStack pb="$4">
           <UserGreeting />
           <BookingCard />
+          <ThemeDebugger />
 
           <YStack px="$4" gap="$3">
             <H4>Challenge in atto</H4>
